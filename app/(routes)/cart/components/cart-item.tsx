@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 import IconButton from "@/components/ui/icon-button";
 import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
-import CartItemInfo from "./cart-item-info";
+import Currency from "@/components/ui/currency";
 
 interface CartItemProps {
   data: Product;
@@ -32,7 +32,16 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
           <IconButton onClick={onRemove} icon={<X size={15} />} />
         </div>
         <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
-          <CartItemInfo product={data} />
+          <div className="flex justify-between">
+            <p className="text-sm font-semibold text-black">{data.name}</p>
+          </div>
+          <div className="mt-1 flex text-sm">
+            <p className="text-gray-500">{data.color.name}</p>
+            <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">
+              {data.size.name}
+            </p>
+          </div>
+          <Currency value={data.price} />
         </div>
       </div>
     </li>
