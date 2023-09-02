@@ -1,17 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-interface CurrencyProps {
-  value?: string | number;
-}
+import { useEffect, useState } from "react";
 
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
 
-const Currency: React.FC<CurrencyProps> = ({ value }) => {
+interface CurrencyProps {
+  value?: string | number;
+}
+
+const Currency: React.FC<CurrencyProps> = ({ value = 0 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
